@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }}'s Profile</title>
+</head>
+<body>
+    <h2>Welcome, {{ username }}</h2>
+    <a href="{{ url_for('stream', username=username) }}">Start Streaming</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
