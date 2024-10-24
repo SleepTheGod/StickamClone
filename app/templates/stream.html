@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }}'s Stream</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h2>{{ username }}'s Stream</h2>
+    <video id="videoElement" autoplay></video>
+    <input type="text" id="message" placeholder="Send message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('message', function(msg) {
+            console.log(msg);
+        });
+
+        function sendMessage() {
+            let msg = document.getElementById('message').value;
+            socket.emit('message', msg);
+        }
+    </script>
+</body>
+</html>
